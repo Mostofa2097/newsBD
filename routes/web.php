@@ -21,4 +21,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//___categoryRoute___//
 Route::get('/categories', [App\Http\Controllers\backend\CategoryController::class, 'index'])->name('category.index');
+Route::post('/store/categories', [App\Http\Controllers\backend\CategoryController::class, 'store'])->name('store.category');

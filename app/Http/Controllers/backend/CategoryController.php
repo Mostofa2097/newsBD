@@ -12,4 +12,18 @@ class CategoryController extends Controller
         $category = DB::table('categories')->get();
         return view('backend.category.index',compact('category'));
     }
+    function store(Request $request){
+        $validated = $request->validate([
+            'category_bn' => 'required|unique:categories|max:55',
+            'category_en' => 'required|unique:categories|max:55',
+            
+        ]);
+        $date=array();
+        $date['category_bn']=$request->category_bn;
+        $date['category_en']=$request->category_en;
+        DB::table('categories')->insert($date);
+
+        return redirect()->back();
+
+    }
 }
