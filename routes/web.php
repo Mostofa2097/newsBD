@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\SubcategoryController;
+use App\Http\Controllers\backend\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +24,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //___categoryRoute___//
-Route::get('/categories', [App\Http\Controllers\backend\CategoryController::class, 'index'])->name('category.index');
-Route::post('/store/categories', [App\Http\Controllers\backend\CategoryController::class, 'store'])->name('store.category');
-Route::get('/delete/categories/{id}', [App\Http\Controllers\backend\CategoryController::class, 'destroy'])->name('delete.category');
-Route::get('/edit/category/{id}', [App\Http\Controllers\backend\CategoryController::class, 'edit']);
-Route::post('/update/categories/{id}', [App\Http\Controllers\backend\CategoryController::class, 'update'])->name('update.category');
+Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
+Route::post('/store/categories', [CategoryController::class, 'store'])->name('store.category');
+Route::get('/delete/categories/{id}', [CategoryController::class, 'destroy'])->name('delete.category');
+Route::get('/edit/category/{id}', [CategoryController::class, 'edit']);
+Route::post('/update/categories/{id}', [CategoryController::class, 'update'])->name('update.category');
+
+
+//____subcategory__//
+Route::get('/subcategories', [SubcategoryController::class, 'index'])->name('index.subcategory');
+Route::post('/store/subcategories', [subcategoryController::class, 'store'])->name('store.subcategory');
