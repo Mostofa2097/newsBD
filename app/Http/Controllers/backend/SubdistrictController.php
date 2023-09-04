@@ -37,4 +37,15 @@ class SubdistrictController extends Controller
         return redirect()->back();
     }
 
+    public function destroy($id){
+        DB::table("subdistricts")->where('id',$id)->delete();
+        return redirect()->back();
+    }
+
+    function edit($id){
+        $sub = DB::table('subdistricts')->where('id',$id)->first();
+        $district = DB::table('districts')->get();
+        return view('backend.subdistrict.edit',compact('sub','district'));
+    }
+
 }

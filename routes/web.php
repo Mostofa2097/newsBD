@@ -50,6 +50,11 @@ Route::post('/update/district/{id}', [DistrictController::class, 'update'])->nam
 //____district__//
 Route::get('/subdistricts', [SubdistrictController::class, 'index'])->name('index.subdistrict');
 Route::post('/store/subdistrict', [SubdistrictController::class, 'store'])->name('store.subdistrict');
+Route::get('/delete/subcategories/{id}', [SubdistrictController::class, 'destroy'])->name('delete.subdistrict');
+Route::get('/edit/subdistrict/{id}', [SubdistrictController::class, 'edit']);
+Route::post('/update/subdistrict/{id}', [SubdistrictController::class, 'update'])->name('update.subdistrict');
+
+
 
 
 

@@ -43,8 +43,8 @@
             <td>{{$row->district_bn}}</td>
             
             <td>
-              <a href="{{URL::to('edit/district/'.$row->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-              <a href="{{route('delete.district',$row->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+              <a href="{{URL::to('edit/subdistrict/'.$row->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+              <a href="{{route('delete.subdistrict',$row->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
           @endforeach
