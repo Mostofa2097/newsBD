@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Sub Categories</h1>
+          <h1 class="m-0">Categories</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-            <li class="breadcrumb-item active">SubCategory</li>
+            <li class="breadcrumb-item active">Category</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -21,7 +21,7 @@
 
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Subcategory Table</h3>
+      <h3 class="card-title">Category Table</h3>
       <button class="btn btn-danger btn-sm" style="float: right;" data-toggle="modal" data-target="#modal-default">Add Category</button>
     </div>
     <!-- /.card-header -->
@@ -29,22 +29,20 @@
       <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>SubCategory Name Bangla</th>
-          <th>SubCategory Name English</th>
-          <th>Category</th>
+          <th>District Name Bangla</th>
+          <th>District Name English</th>
           <th>Action</th>
         </tr>
         </thead>
         <tbody>
-          @foreach ($sub as $row)
+          @foreach ($district as $row)
           <tr>
-            <td>{{$row->subcategory_bn}}</td>
-            <td>{{$row->subcategory_en}}</td>
-            <td>{{$row->category_en}}|{{$row->category_bn}}</td>
+            <td>{{$row->district_bn}}</td>
+            <td>{{$row->district_en}}</td>
             
             <td>
-              <a href="{{URL::to('edit/subcategory/'.$row->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-              <a href="{{route('delete.subcategory',$row->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+              <a href="{{URL::to('edit/district/'.$row->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+              <a href="{{route('delete.district',$row->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
           @endforeach
@@ -54,7 +52,6 @@
           <tr>
             <th>Category Name Bangla</th>
             <th>Category Name English</th>
-            <th>Category </th>
             <th>Action</th>
           </tr>
           </tfoot>
@@ -88,36 +85,25 @@
       <div class="modal-body">
         
 
-        <form method="POST" action="{{route('store.subcategory')}}">
+        <form method="POST" action="{{route('store.district')}}">
           @csrf
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">SubCategory Name Bangla</label>
-            <input type="text" class="form-control @error('subcategory_bn') is-invalid @enderror" id="bangla" aria-describedby="emailHelp" name="subcategory_bn">
-            @error('subcategory_bn')
+            <label for="exampleInputEmail1" class="form-label">District Name Bangla</label>
+            <input type="text" class="form-control @error('district_bn') is-invalid @enderror" id="bangla" aria-describedby="emailHelp" name="district_bn">
+            @error('district_bn')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
                 </span>
             @enderror
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">SubCategory Namke English</label>
-            <input type="text" class="form-control @error('subcategory_en') is-invalid @enderror" id="english" name="subcategory_en">
-            @error('subcategory_en')
+            <label for="exampleInputPassword1" class="form-label">District Name English</label>
+            <input type="text" class="form-control @error('district_bn') is-invalid @enderror" id="english" name="district_en">
+            @error('district_en')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
                 </span>
             @enderror
-          </div>
-
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Choose Category</label>
-           <select name="category_id" class="form-control">
-            <option disabled="" selected="">--choose one--</option>
-            @foreach ($category as $row)
-                <option value="{{$row->id}}">{{$row->category_en}}|{{$row->category_bn}}</option>
-            @endforeach
-
-           </select>
           </div>
           
           <button type="submit" class="btn btn-success btn-block">Submit</button>
