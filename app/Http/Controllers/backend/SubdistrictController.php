@@ -48,4 +48,23 @@ class SubdistrictController extends Controller
         return view('backend.subdistrict.edit',compact('sub','district'));
     }
 
+
+    function update( Request $request,$id){
+        $validated = $request->validate([
+            'subdistrict_bn' => 'required|unique:subdistricts|max:55',
+            'subdistrict_en' => 'required|unique:subdistricts|max:55',
+            
+        ]);
+
+        $date=array();
+        $date['subdistrict_bn']=$request->subdistrict_bn;
+        $date['subdistrict_en']=$request->subdistrict_en;
+        $date['district_id']=$request->district_id;
+        DB::table('subdistricts')->where('id',$id)->update($date);
+
+        return redirect()->route('index.subdistrict');
+
+        
+    }
+
 }
