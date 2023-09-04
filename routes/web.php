@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\DistrictController;
+use App\Http\Controllers\backend\SubdistrictController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,9 @@ Route::get('/delete/district/{id}', [DistrictController::class, 'destroy'])->nam
 Route::get('/edit/district/{id}', [DistrictController::class, 'edit']);
 Route::post('/update/district/{id}', [DistrictController::class, 'update'])->name('update.district');
 
+//____district__//
+Route::get('/subdistricts', [SubdistrictController::class, 'index'])->name('index.subdistrict');
+Route::post('/store/subdistrict', [SubdistrictController::class, 'store'])->name('store.subdistrict');
 
 
 

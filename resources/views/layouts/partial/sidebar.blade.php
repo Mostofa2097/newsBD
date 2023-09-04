@@ -77,7 +77,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                {{-- <a href="{{route('index.subdistrict')}}" class="nav-link"> --}}
+                <a href="{{route('index.subdistrict')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sub-District</p>
                 </a>
