@@ -54,7 +54,7 @@ Route::get('/delete/subcategories/{id}', [SubdistrictController::class, 'destroy
 Route::get('/edit/subdistrict/{id}', [SubdistrictController::class, 'edit']);
 Route::post('/update/subdistrict/{id}', [SubdistrictController::class, 'update'])->name('update.subdistrict');
 
-
+//____posts__//
 
 
 

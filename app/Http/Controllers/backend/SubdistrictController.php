@@ -51,8 +51,8 @@ class SubdistrictController extends Controller
 
     function update( Request $request,$id){
         $validated = $request->validate([
-            'subdistrict_bn' => 'required|unique:subdistricts|max:55',
-            'subdistrict_en' => 'required|unique:subdistricts|max:55',
+            'subdistrict_bn' => 'required',
+            'subdistrict_en' => 'required',
             
         ]);
 

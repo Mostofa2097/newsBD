@@ -52,9 +52,10 @@
        
         <tfoot>
           <tr>
-            <th>Category Name Bangla</th>
-            <th>Category Name English</th>
-            <th>Action</th>
+          <th>SubDistrict Name Bangla</th>
+          <th>SubDistrict Name English</th>
+          <th>district</th>
+          <th>Action</th>
           </tr>
           </tfoot>
       </table>

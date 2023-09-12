@@ -22,7 +22,7 @@
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">subdistrict modify</h3>
-      <button class="btn btn-danger btn-sm" style="float: right;" data-toggle="modal" data-target="#modal-default">Add subdistrict</button>
+      <button class="btn btn-danger btn-sm" style="float: right;" data-toggle="modal" data-target="#modal-default">Add Category</button>
     </div>
     <!-- /.card-header -->
     <div class="card-body col-lg-8">
@@ -56,7 +56,7 @@
                    <select name="district_id" class="form-control">
                     <option disabled="" selected="">--choose one--</option>
                     @foreach ($district as $row)
-                        <option value="{{$row->id}}">{{$row->district_bn}}|{{$row->district_bn}}</option>
+                        <option value="{{$row->id}}">{{$row->district_en}}|{{$row->district_bn}}</option>
                     @endforeach
         
                    </select>
