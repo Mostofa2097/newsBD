@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+   <!-- summernote -->
+   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/summernote/summernote-bs4.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{ asset('backend') }}/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
@@ -96,12 +98,31 @@
 <script src="{{ asset('backend') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="{{ asset('backend') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{ asset('backend') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+
+
+
+
+
 <!-- AdminLTE App -->
 <script src="{{ asset('backend') }}/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('backend') }}/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('backend') }}/dist/js/pages/dashboard.js"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>
 <script>
   $(function () {
     $("#example1").DataTable({

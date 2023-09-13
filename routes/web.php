@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\DistrictController;
+use App\Http\Controllers\backend\PostController;
 use App\Http\Controllers\backend\SubdistrictController;
 
 /*
@@ -36,7 +37,7 @@ Route::post('/update/categories/{id}', [CategoryController::class, 'update'])->n
 //____subcategory__//
 Route::get('/subcategories', [SubcategoryController::class, 'index'])->name('index.subcategory');
 Route::post('/store/subcategories', [SubcategoryController::class, 'store'])->name('store.subcategory');
-Route::get('/delete/subcategories/{id}', [SubcategoryController::class, 'destroy'])->name('delete.subcategory');
+Route::get('/delete/subcategory/{id}', [SubcategoryController::class, 'destroy']);
 Route::get('/edit/subcategory/{id}', [SubcategoryController::class, 'edit']);
 Route::post('/update/subcategories/{id}', [SubcategoryController::class, 'update'])->name('update.subcategory');
 
@@ -56,7 +57,4 @@ Route::post('/update/subdistrict/{id}', [SubdistrictController::class, 'update']
 
 //____posts__//
 
-
-
-
-
+Route::get('/post', [PostController::class, 'create'])->name('insert.post');
