@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -32,40 +32,40 @@ class PostController extends Controller
             'dist_id' => 'required',
             
         ]);
-        $date=array();
+        $data=array();
         					
         					
-        $date['title_bn']=$request->title_bn;
-        $date['title_en']=$request->title_en;
-        $date['user_id']=Auth::id();
-        $date['cat_id']=$request->cat_id;
-        $date['subcat_id']=$request->subcat_id;
-        $date['dist_id']=$request->dist_id;
-        $date['subdist_id']=$request->subdist_id;
-        $date['details_bn']=$request->details_bn;
-        $date['details_en']=$request->details_en;
-        $date['tag_bn']=$request->tag_bn;
-        $date['tag_en']=$request->tag_en;
-        $date['headline']=$request->headline;
-        $date['first_section']=$request->first_section;
-        $date['first_section_thumbnail']=$request->first_section_thumbnail;
-        $date['bigthumbnail']=$request->bigthumbnail;
-        $date['post_date']=date('d-m-Y');
-        $date['post_month']=date("F");
-        $date['image']=$request->image;
+        $data['title_bn']=$request->title_bn;
+        $data['title_en']=$request->title_en;
+        $data['user_id']=Auth::id();
+        $data['cat_id']=$request->cat_id;
+        $data['subcat_id']=$request->subcat_id;
+        $data['dist_id']=$request->dist_id;
+        $data['subdist_id']=$request->subdist_id;
+        $data['details_bn']=$request->details_bn;
+        $data['details_en']=$request->details_en;
+        $data['tag_bn']=$request->tag_bn;
+        $data['tag_en']=$request->tag_en;
+        $data['headline']=$request->headline;
+        $data['first_section']=$request->first_section;
+        $data['first_section_thumbnail']=$request->first_section_thumbnail;
+        $data['bigthumbnail']=$request->bigthumbnail;
+        $data['post_date']=date('d-m-Y');
+        $data['post_month']=date("F");
+        $data['image']=$request->image;
 
         // $image=$request->image;
         // if($image){
         //     $image_one= uniqid().'.'.$image->getClientOriginalExtension();
-        //     /Image::make($image_one)->resize(500,340)->save('public/postimages/'.$image_one);
+        //     Image::make($image)->resize(500,340)->save('public/postimages/'.$image_one);
         //     $data['image'] = 'public/postimages/'.$image_one;
-        //     DB::table('posts')->insert($date);
+        //     DB::table('posts')->insert($data);
         //     return redirect()->back();
         // }
         // else{
         //     return redirect()->back(); 
         // } 
-        DB::table('posts')->insert($date);
+        DB::table('posts')->insert($data);
             return redirect()->back();
 
     }
