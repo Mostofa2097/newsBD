@@ -54,7 +54,13 @@ Route::post('/store/subdistrict', [SubdistrictController::class, 'store'])->name
 Route::get('/delete/subcategories/{id}', [SubdistrictController::class, 'destroy'])->name('delete.subdistrict');
 Route::get('/edit/subdistrict/{id}', [SubdistrictController::class, 'edit']);
 Route::post('/update/subdistrict/{id}', [SubdistrictController::class, 'update'])->name('update.subdistrict');
+//____json data multiple dependency__//
+Route::get('/get/subcat/{cat_id}', [PostController::class, 'GetSubcat']);
+Route::get('/get/subdist/{dist_id}', [PostController::class, 'GetSubdist']);
+
 
 //____posts__//
 
 Route::get('/post', [PostController::class, 'create'])->name('insert.post');
+Route::post('/store/post', [PostController::class, 'store'])->name('store.post');
+

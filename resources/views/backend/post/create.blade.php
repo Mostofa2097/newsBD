@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -32,7 +34,8 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form>
+            <form role="form" action="{{route('store.post')}}" method="post" enctype="multipart/form-data">
+                @csrf 
               <div class="card-body">
 
             <div class="row">
@@ -59,11 +62,9 @@
 
                 <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">SubCategory </label>
-                   <select name="subcat_id" class="form-control">
+                   <select name="subcat_id" class="form-control" id="subcat_id">
                       <option selected disabled>==choosw one==</option>
-                       {{-- @foreach ($category as $row)
-                           <option value="{{$row->id}}">{{$row->category_bn}}</option>
-                       @endforeach --}}
+                      
                    </select>
                   </div>
              </div>
@@ -80,11 +81,9 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">SubDistrict </label>
-                   <select name="subdist_id" class="form-control">
-                      <option selected disabled>==choosw one==</option>
-                       {{-- @foreach ($category as $row)
-                           <option value="{{$row->id}}">{{$row->category_bn}}</option>
-                       @endforeach --}}
+                   <select name="subdist_id" class="form-control" id="subdist_id">
+                      <option selected disabled>==choose one==</option>
+                       
                    </select>
                   </div>
             </div>
@@ -122,7 +121,7 @@
                   <label for="exampleInputFile">File input</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="exampleInputFile">
+                      <input type="file" class="custom-file-input" id="exampleInputFile" name="image" required>
                       <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                     </div>
                     <div class="input-group-append">
@@ -130,6 +129,8 @@
                     </div>
                   </div>
                 </div>
+
+
                 <hr>
                 <h4 class="text-center">Extra option</h4>
                 
@@ -176,6 +177,57 @@
       </div>
     </div>
   </section>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('select[name="cat_id"]').on('change',function(){
+        var cat_id = $(this).val();
+        if(cat_id){
+            $.ajax({
+                url:"{{url('/get/subcat/')}}/"+cat_id,
+                type:"GET",
+                dataType:"json",
+                success:function(data){
+                    $("#subcat_id").empty();
+                    $.each(data,function(key,value){
+                        $("#subcat_id").append('<option value="'+value+'">'+value.subcategory_bn+'</option>');
+                    });
+                    console.log(data)
+                    },
+                    });
+                }else{
+                    alert("denger");
+                }
+            });
+         });
+
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('select[name="dist_id"]').on('change',function(){
+          var dist_id = $(this).val();
+          if(dist_id){
+              $.ajax({
+                  url:"{{url('/get/subdist/')}}/"+dist_id,
+                  type:"GET",
+                  dataType:"json",
+                  success:function(data){
+                      $("#subdist_id").empty();
+                      $.each(data,function(key,value){
+                          $("#subdist_id").append('<option value="'+value+'">'+value.subdistrict_bn+'</option>');
+                      });
+                      console.log(data)
+                      },
+                      });
+                  }else{
+                      alert("denger");
+                  }
+              });
+           });
+  
+    </script>
+    
   
 
 
