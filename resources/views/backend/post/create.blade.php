@@ -21,6 +21,8 @@
     </div><!-- /.container-fluid -->
   </div>
 
+  {{-- image show --}}
+  {{-- <img src="{{asset($show->image)}}" alt=""> --}}
 
   <section class="content">
     <div class="container-fluid">
@@ -190,7 +192,7 @@
                 success:function(data){
                     $("#subcat_id").empty();
                     $.each(data,function(key,value){
-                        $("#subcat_id").append('<option value="'+value+'">'+value.subcategory_bn+'</option>');
+                        $("#subcat_id").append('<option value="'+value.id+'">'+value.subcategory_bn+'</option>');
                     });
                     console.log(data)
                     },
@@ -215,7 +217,7 @@
                   success:function(data){
                       $("#subdist_id").empty();
                       $.each(data,function(key,value){
-                          $("#subdist_id").append('<option value="'+value+'">'+value.subdistrict_bn+'</option>');
+                          $("#subdist_id").append('<option value="'+value.id+'">'+value.subdistrict_bn+'</option>');
                       });
                       console.log(data)
                       },
