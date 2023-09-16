@@ -47,7 +47,7 @@
             <td>{{$row->post_date}}</td>
 
             <td>
-              <a href="{{URL::to('edit/subcategory/'.$row->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+              <a href="{{URL::to('edit/post/'.$row->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
               <a href="{{URL::to('delete/post/'.$row->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></i></a>
             </td>
           </tr>

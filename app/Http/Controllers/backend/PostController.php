@@ -28,12 +28,11 @@ class PostController extends Controller
         // return response()->json($post);
 
         $post = DB::table('posts')
-        ->join('categories','posts.cat_id','categories.id')
-        ->join('subcategories','posts.subcat_id','subcategories.id')
-        ->select('posts.*','categories.category_bn','subcategories.subcategory_bn')
-        ->get();
-        return view('backend.post.index',compact('post'));
-        
+            ->join('categories', 'posts.cat_id', 'categories.id')
+            ->join('subcategories', 'posts.subcat_id', 'subcategories.id')
+            ->select('posts.*', 'categories.category_bn', 'subcategories.subcategory_bn')
+            ->get();
+        return view('backend.post.index', compact('post'));
     }
     //create
     public function create()
@@ -126,10 +125,96 @@ class PostController extends Controller
         return response()->json($sub);
     }
 
-//delete//
-public function destroy($id){
-    DB::table("posts")->where('id',$id)->delete();
-    return redirect()->back();
-}
+    //delete//
+    public function destroy($id)
+    {
 
+
+        $post = DB::table("posts")->where('id', $id)->first();
+        unlink($post->image);
+        DB::table("posts")->where('id', $id)->delete();
+        return redirect()->back();
+    }
+
+    //update_post//
+    public function update(Request $request,$id)
+    {
+
+        $validated = $request->validate([
+            'cat_id' => 'required',
+            'dist_id' => 'required',
+
+        ]);
+        $data = array();
+
+
+        $data['title_bn'] = $request->title_bn;
+        $data['title_en'] = $request->title_en;
+        $data['cat_id'] = $request->cat_id;
+        $data['subcat_id'] = $request->subcat_id;
+        $data['dist_id'] = $request->dist_id;
+        $data['subdist_id'] = $request->subdist_id;
+        $data['details_bn'] = $request->details_bn;
+        $data['details_en'] = $request->details_en;
+        $data['tag_bn'] = $request->tag_bn;
+        $data['tag_en'] = $request->tag_en;
+        $data['headline'] = $request->headline;
+        $data['first_section'] = $request->first_section;
+        $data['first_section_thumbnail'] = $request->first_section_thumbnail;
+        $data['bigthumbnail'] = $request->bigthumbnail;
+
+        $data['image'] = $request->image;
+
+        /* single image upload */
+        // $image = $request->file('image');
+        // if ($image) {
+        //     $image_name = Str::random(20);
+        //     $ext = strtolower($image->getClientOriginalExtension());
+        //     $image_full_name = $image_name . '.' . $ext;
+        //     $upload_path = 'postimages/';
+        //     $document_url = $upload_path . $image_full_name;
+        //     $success = $image->move($upload_path, $image_full_name);
+        //     if ($success) {
+        //         $data['image'] = $document_url;
+        //     }
+        // }
+
+        // image updated code
+        $oldimage  = $request->oldimage;
+        $checkImage = $request->file('image');
+        if ($checkImage) {
+            $image = $request->file('image');
+            if ($image) {
+                $image_name = Str::random(20);
+                $ext = strtolower($image->getClientOriginalExtension());
+                $image_full_name = $image_name . '.' . $ext;
+                $upload_path = 'postimages/';
+                $document_url = $upload_path . $image_full_name;
+                $success = $image->move($upload_path, $image_full_name);
+                if ($success) {
+                    $data['image'] = $document_url;
+                }
+            }
+        }
+
+
+        DB::table('posts')->where('id',$id)->update($data);
+        
+
+        return redirect()->route('all.post');
+
+        
+    }
+
+
+
+    //delete//
+    public function edit($id)
+    {
+
+        $post = DB::table("posts")->where('id', $id)->first();
+        $category = DB::table('categories')->get();
+        $district = DB::table('districts')->get();
+        return view('backend.post.edit', compact('post','category','district'));
+    }
 }

@@ -59,11 +59,14 @@ Route::get('/get/subcat/{cat_id}', [PostController::class, 'GetSubcat']);
 Route::get('/get/subdist/{dist_id}', [PostController::class, 'GetSubdist']);
 
 
-//____posts__//
+//____posts__//edit/post/
 
 Route::get('/post', [PostController::class, 'create'])->name('insert.post');
 Route::post('/store/post', [PostController::class, 'store'])->name('store.post');
 Route::get('/all/post', [PostController::class, 'index'])->name('all.post');
 Route::get('/delete/post/{id}', [PostController::class, 'destroy']);
+Route::get('/edit/post/{id}', [PostController::class, 'edit']);
+Route::post('/update/post/{id}', [PostController::class, 'update'])->name('update.post');
+
 
 
