@@ -104,7 +104,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('index.subdistrict')}}" class="nav-link">
+                <a href="{{route('all.post')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Posts</p>
                 </a>

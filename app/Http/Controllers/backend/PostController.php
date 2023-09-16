@@ -19,15 +19,30 @@ class PostController extends Controller
     //all_posts
     public function index()
     {
+        // $post = DB::table('posts')
+        // ->join('categories','posts.cat_id','categories.id')
+        // ->join('subcategories','posts.subcat_id','subcategories.id')
+        // ->join('districts','posts.dist_id','districts.id')
+        // ->join('subdistricts','posts.subdist_id','subdistricts.id')
+        // ->get();
+        // return response()->json($post);
+
+        $post = DB::table('posts')
+        ->join('categories','posts.cat_id','categories.id')
+        ->join('subcategories','posts.subcat_id','subcategories.id')
+        ->select('posts.*','categories.category_bn','subcategories.subcategory_bn')
+        ->get();
+        return view('backend.post.index',compact('post'));
+        
     }
-    //all_posts
+    //create
     public function create()
     {
         $category = DB::table('categories')->get();
         $district = DB::table('districts')->get();
         return view('backend.post.create', compact('category', 'district'));
     }
-    //all_posts
+    //store
     public function store(Request $request)
     {
 
