@@ -64,5 +64,6 @@ Route::get('/get/subdist/{dist_id}', [PostController::class, 'GetSubdist']);
 Route::get('/post', [PostController::class, 'create'])->name('insert.post');
 Route::post('/store/post', [PostController::class, 'store'])->name('store.post');
 Route::get('/all/post', [PostController::class, 'index'])->name('all.post');
-Route::get('/delete/subcategories/{id}', [SubdistrictController::class, 'destroy'])->name('delete.subdistrict');
+Route::get('/delete/post/{id}', [PostController::class, 'destroy']);
+
 

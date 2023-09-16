@@ -125,4 +125,11 @@ class PostController extends Controller
         $sub = DB::table('subdistricts')->where('district_id', $dist_id)->get();
         return response()->json($sub);
     }
+
+//delete//
+public function destroy($id){
+    DB::table("posts")->where('id',$id)->delete();
+    return redirect()->back();
+}
+
 }
