@@ -59,6 +59,27 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function namazSetting()
+    {
+        $namaz = DB::table('namaz')->first();
+        return view('backend.setting.namaz', compact('namaz'));
+    }
+
+    public function updateNamaz(Request $request, $id)
+    {
+        $date = array();
+        $date['fajar'] = $request->fajar;
+        $date['johor'] = $request->johor;
+        $date['ashor'] = $request->ashor;
+        $date['magrib'] = $request->magrib;
+        $date['esha'] = $request->esha;
+        $date['jummah'] = $request->jummah;
+
+     DB::table('namaz')->where('id', $id)->update($date);
+
+        return redirect()->back();
+    }
+
 
 
 

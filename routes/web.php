@@ -78,3 +78,6 @@ Route::post('/update/social/{id}', [SettingController::class, 'updateSocial'])->
 //____seo__
 Route::get('/seo/setting', [SettingController::class, 'SeoSetting'])->name('seo.setting');
 Route::post('/update/seo/{id}', [SettingController::class, 'updateSeo'])->name('update.seo');
+//____namaz__
+Route::get('/namaz/setting', [SettingController::class, 'namazSetting'])->name('namaz.setting');
+Route::post('/update/namaz/{id}', [SettingController::class, 'updateNamaz'])->name('update.namaz');
