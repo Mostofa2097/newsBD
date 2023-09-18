@@ -141,6 +141,12 @@
                   <p>namaz Setting</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('livetv.setting')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>livetv Setting</p>
+                </a>
+              </li>
               
             </ul>
           </li>

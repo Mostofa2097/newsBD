@@ -81,3 +81,9 @@ Route::post('/update/seo/{id}', [SettingController::class, 'updateSeo'])->name('
 //____namaz__
 Route::get('/namaz/setting', [SettingController::class, 'namazSetting'])->name('namaz.setting');
 Route::post('/update/namaz/{id}', [SettingController::class, 'updateNamaz'])->name('update.namaz');
+//____livetv__
+Route::get('/livetv/setting', [SettingController::class, 'livetvSetting'])->name('livetv.setting');
+Route::post('/update/livetv/{id}', [SettingController::class, 'updateLivetv'])->name('update.livetv');
+Route::get('/active/livetv/{id}', [SettingController::class, 'activeLivetv'])->name('active.livetv');
+Route::get('/deactive/livetv/{id}', [SettingController::class, 'deactiveLivetv'])->name('deactive.livetv');
+

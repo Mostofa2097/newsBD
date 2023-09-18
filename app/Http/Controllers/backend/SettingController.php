@@ -80,6 +80,34 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function livetvSetting()
+    {
+        $livetv = DB::table('livetv')->first();
+        return view('backend.setting.livetv', compact('livetv'));
+    }
+
+    public function updateLivetv(Request $request, $id)
+    {
+        $date = array();
+        $date['embed_code'] = $request->embed_code;
+        DB::table('livetv')->where('id', $id)->update($date);
+        return redirect()->back();
+    }
+
+    public function activeLivetv($id)
+    {
+        
+        DB::table('livetv')->where('id', $id)->update(['status'=>1]);
+        return redirect()->back();
+    }
+
+    public function deactiveLivetv($id)
+    {
+        
+        DB::table('livetv')->where('id', $id)->update(['status'=>0]);
+        return redirect()->back();
+    }
+
 
 
 
