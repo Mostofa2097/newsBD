@@ -147,6 +147,18 @@
                   <p>livetv Setting</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('notice.setting')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Notice Setting</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('important.website')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Importent website</p>
+                </a>
+              </li>
               
             </ul>
           </li>

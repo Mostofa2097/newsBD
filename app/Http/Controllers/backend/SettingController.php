@@ -108,6 +108,51 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function noticeSetting()
+    {
+        $notice = DB::table('notices')->first();
+        return view('backend.setting.notice', compact('notice'));
+    }
+
+    public function updateNotice(Request $request, $id)
+    {
+        $date = array();
+        $date['notice'] = $request->notice;
+        DB::table('notices')->where('id', $id)->update($date);
+        return redirect()->back();
+    }
+
+    public function activeNotice($id)
+    {
+        
+        DB::table('notices')->where('id', $id)->update(['status'=>1]);
+        return redirect()->back();
+    }
+    public function deactiveNotice($id)
+    {
+        
+        DB::table('notices')->where('id', $id)->update(['status'=>0]);
+        return redirect()->back();
+    }
+ 
+    public function importantWebsite()
+    {
+        $website = DB::table('websites')->get();
+        return view('backend.setting.website', compact('website'));
+
+    }
+
+    public function storeWebsite(Request $request)
+    {
+        $date = array();
+        $date['website_name'] = $request->website_name;
+        $date['website_link'] = $request->website_link;
+        
+     DB::table('websites')->insert($date);
+
+        return redirect()->back();
+    }
+
 
 
 
