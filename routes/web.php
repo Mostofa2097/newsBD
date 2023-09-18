@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\DistrictController;
+use App\Http\Controllers\backend\GalleryController;
 use App\Http\Controllers\backend\PostController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\SubdistrictController;
@@ -94,3 +95,9 @@ Route::get('/deactive/notice/{id}', [SettingController::class, 'deactiveNotice']
 //____website__
 Route::get('/important/website', [SettingController::class, 'importantWebsite'])->name('important.website');
 Route::post('/store/website', [SettingController::class, 'storeWebsite'])->name('store.website');
+//____photoGallery__
+Route::get('/photo/gallery', [GalleryController::class, 'Photos'])->name('photo.gallery');
+Route::post('/store/photo', [GalleryController::class, 'storePhoto'])->name('store.photo');
+
+
+
