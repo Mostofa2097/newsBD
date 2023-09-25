@@ -98,6 +98,9 @@ Route::post('/store/website', [SettingController::class, 'storeWebsite'])->name(
 //____photoGallery__
 Route::get('/photo/gallery', [GalleryController::class, 'Photos'])->name('photo.gallery');
 Route::post('/store/photo', [GalleryController::class, 'storePhoto'])->name('store.photo');
+//____photoGallery__
+Route::get('/video/gallery', [GalleryController::class, 'videos'])->name('video.gallery');
+Route::post('/store/video', [GalleryController::class, 'storeVideo'])->name('store.video');
 
 
 

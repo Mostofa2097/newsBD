@@ -180,7 +180,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('all.post')}}" class="nav-link">
+                <a href="{{route('video.gallery')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Video Gallery</p>
                 </a>

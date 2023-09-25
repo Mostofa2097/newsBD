@@ -50,15 +50,35 @@ class GalleryController extends Controller
                 $data['photo'] = $document_url;
             }
         }
-
-       
-
-
         DB::table('photos')->insert($data);
         return redirect()->back();
     }
-
     
+    public function videos(){
+        $video = DB::table('videos')->get();
+        return view('backend.gallery.video',compact('video'));
+     }
+     
+
+     public function storeVideo(Request $request)
+    {
+
+        $validated = $request->validate([
+            'title' => 'required',
+            'type' => 'required',
+
+        ]);
+
+        $data = array();
+
+        $data['title'] = $request->title;
+        $data['embed_code'] = $request->embed_code;
+        $data['type'] = $request->type;
+        
+
+        DB::table('videos')->insert($data);
+        return redirect()->back();
+    }
 
 
 }
