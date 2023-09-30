@@ -22,7 +22,7 @@ use App\Http\Controllers\backend\SubdistrictController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 
 Auth::routes();
