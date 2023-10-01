@@ -132,15 +132,19 @@
 							<div class="sidebar-add"><img src="{{ asset('frontend/assets') }}/img/add_01.jpg" alt="" /></div>
 						</div>
 					</div><!-- /.add-close -->	
-					
-					<!-- youtube-live-start -->	
+					@php
+						$tv = DB::table('livetv')->first();
+					@endphp
+					@if($tv->status==1)
+					<!-- youtube-live-start -->
+	
 					<div class="cetagory-title-03">লাইভ টিভি </div>
 					<div class="photo">
 						<div class="embed-responsive embed-responsive-16by9 embed-responsive-item" style="margin-bottom:5px;">
-							<iframe width="729" height="410" src="https://www.youtube.com/embed/8HnnNf-3VuE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          {!! $tv->embed_code !!}
 						</div>
 					</div><!-- /.youtube-live-close -->	
-					
+					@endif
 					<!-- facebook-page-start -->
 					<div class="cetagory-title-03">ফেসবুকে আমরা</div>
 					<div class="fb-root">
