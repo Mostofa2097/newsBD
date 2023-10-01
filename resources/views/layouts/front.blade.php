@@ -60,10 +60,23 @@ $seo = DB::table('seos')->first();
 											 $subcategory = DB::table('subcategories')->where('category_id',$row->id)->get();	
 											@endphp
 											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$row->category_bn}} </a>
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+													@if (session()->get('lang') == 'english')
+													{{$row->category_en}} 
+													@else
+													{{$row->category_bn}} 
+													@endif
+													
+												</a>
 											<ul class="dropdown-menu">
 												@foreach ($subcategory as $row)
-												<li><a href="#">{{$row->subcategory_bn}}</a></li>
+												<li><a href="#">
+													@if (session()->get('lang') == 'english')
+													{{$row->subcategory_en}} 
+													@else
+													{{$row->subcategory_bn}} 
+													@endif
+												</a></li>
 												@endforeach
 												
 											</ul>
@@ -81,7 +94,12 @@ $seo = DB::table('seos')->first();
 					<div class="header-icon">
 						<ul>
 							<!-- version-start -->
-							<li class="version"><a href="#">English</a></li>
+							@if (session()->get('lang')=='english')
+							<li class="version"><a href="{{route('lang.bangla')}}">bangla</a></li>
+							@else
+							<li class="version"><a href="{{route('lang.english')}}">english</a></li>
+							@endif
+							
 							<!-- login-start -->
 						
 							<!-- search-start -->
