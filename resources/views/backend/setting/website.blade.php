@@ -29,7 +29,8 @@
       <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>Website Name</th>
+          <th>Website Name Bangla</th>
+          <th>Website Name English</th>
           <th>Website link</th>
           <th>Action</th>
         </tr>
@@ -38,6 +39,7 @@
           @foreach ($website as $row)
           <tr>
             <td>{{$row->website_name}}</td>
+            <td>{{$row->website_name_en}}</td>
             <td>{{$row->website_link}}</td>
             
             <td>
@@ -50,9 +52,10 @@
        
         <tfoot>
           <tr>
-            <th>Website Name</th>
-          <th>Website link</th>
-          <th>Action</th>
+            <th>Website Name Bangla</th>
+            <th>Website Name English</th>
+            <th>Website link</th>
+            <th>Action</th>
           </tr>
           </tfoot>
       </table>
@@ -88,14 +91,25 @@
         <form method="POST" action="{{route('store.website')}}">
           @csrf
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Website Name</label>
-            <input type="text" class="form-control @error('category_bn') is-invalid @enderror" id="bangla" aria-describedby="emailHelp" name="website_name">
+            <label for="exampleInputEmail1" class="form-label">Website Name Bangla</label>
+            <input type="text" class="form-control @error('website_name') is-invalid @enderror" id="bangla" aria-describedby="emailHelp" name="website_name">
             @error('website_name')
                 <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
                 </span>
             @enderror
           </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Website Name English</label>
+            <input type="text" class="form-control @error('category_en') is-invalid @enderror" id="english" aria-describedby="emailHelp" name="website_name_en">
+            @error('website_name_en')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+          </div>
+
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Website link</label>
             <input type="text" class="form-control @error('category_bn') is-invalid @enderror" id="english" name="website_link">

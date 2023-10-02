@@ -96,9 +96,9 @@ $social = DB::table('socials')->first();
 						<ul>
 							<!-- version-start -->
 							@if (session()->get('lang')=='english')
-							<li class="version"><a href="{{route('lang.bangla')}}">bangla</a></li>
+							<li class="version"><a href="{{route('lang.bangla')}}">বাংলা </a></li>
 							@else
-							<li class="version"><a href="{{route('lang.english')}}">english</a></li>
+							<li class="version"><a href="{{route('lang.english')}}">English</a></li>
 							@endif
 							
 							<!-- login-start -->
@@ -181,15 +181,38 @@ $social = DB::table('socials')->first();
     </section><!-- /.date-close -->  
 
 	<!-- notice-start -->
-	 
+	 @php
+		 $headline = DB::table('posts')
+
+		 ->where('posts.headline',1)
+		 ->orderBy('id','DESC')
+		 ->limit(5)
+		 ->get();
+	 @endphp
     <section>
     	<div class="container-fluid">
 			<div class="row scroll">
 				<div class="col-md-2 col-sm-3 scroll_01 ">
-					শিরোনাম :
+					    @if (session()->get('lang') == 'english')
+                        Headline : 
+                        @else
+                        শিরোনাম :
+                        @endif
+					
 				</div>
 				<div class="col-md-10 col-sm-9 scroll_02">
-					<marquee>wellcome to our website...</marquee>
+					<marquee>
+						@foreach ($headline as $row)
+                          <a href=""style="color:white">
+							@if (session()->get('lang') == 'english')
+							 * {{$row->title_en}}
+							@else
+							 * {{$row->title_bn}}
+							@endif					 
+						 </a>
+						
+						@endforeach
+					</marquee>
 				</div>
 			</div>
     	</div>

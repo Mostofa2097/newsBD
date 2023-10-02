@@ -146,6 +146,7 @@ class SettingController extends Controller
     {
         $date = array();
         $date['website_name'] = $request->website_name;
+        $date['website_name_en'] = $request->website_name_en;
         $date['website_link'] = $request->website_link;
         
      DB::table('websites')->insert($date);
