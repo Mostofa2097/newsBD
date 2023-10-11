@@ -9,15 +9,33 @@
             <div class="col-md-12">
                 <ol class="breadcrumb">   
                    <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>					   
-                    <li><a href="#">{{$post->category_bn}}</a></li>
-                    <li><a href="#">{{$post->subcategory_bn}}</a></li>
+                    <li><a href="#">
+                        @if (session()->get('lang') == 'english')
+                        {{$post->category_en}}
+                        @else
+                        {{$post->category_bn}}
+                        @endif
+                        </a></li>
+                    <li><a href="#">
+                        @if (session()->get('lang') == 'english')
+                        {{$post->subcategory_en}}
+                        @else
+                        {{$post->subcategory_bn}}
+                        @endif
+                        </a></li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 col-sm-12"> 											
                 <header class="headline-header margin-bottom-10">
-                    <h1 class="headline">‘পরিস্থিতি খুব খারাপ হলে দিনে সর্বোচ্চ ৬৫০০০ মানুষ সংক্রমিত হতে পারে’</h1>
+                    <h1 class="headline">
+                        @if (session()->get('lang') == 'english')
+                        {{$post->title_en}}
+                        @else
+                        {{$post->title_bn}}
+                        @endif
+                    </h1>
                 </header>
      
      
@@ -27,7 +45,7 @@
                      <ul class="list-inline">
                      
                      
-                     <li>অন্যদৃষ্টি  অনলাইন </li>     <li><i class="fa fa-clock-o"></i> ০৯ মে ২০২০, ১০:৪৯</li>
+                     <li>{{$post->name}} </li>     <li><i class="fa fa-clock-o"></i> {{$post->post_date}}</li>
                      </ul>
                     
                     </div>
@@ -48,164 +66,159 @@
       <div class="row">
         <div class="col-md-8 col-sm-8">
             <div class="single-news">
-                <img src="assets/img/news.jpg" alt="" />
-                <h4 class="caption"> বাংলাদেশে করোনাভাইরাসের পরীক্ষা ব্যাপকহারে করা এবং চিকিৎসা ব্যবস্থা নিয়ে প্রশ্ন থাকছেই। - ছবি : বিবিসি </h4>
-                <p>বিশেষজ্ঞরা বলেছেন, লকডাউন ভেঙে পড়ায় হাজার হাজার মানুষের সংক্রমণের ঝুঁকি তৈরি হয়েছে। সেই পরিস্থিতি সামাল দেয়ার জন্য চিকিৎসার পর্যাপ্ত ব্যবস্থা করাও সম্ভব হয়নি বলে তারা মনে করেন।
-                তাহলে বাংলাদেশের জন্য এখন উপায় কী আছে বা কোন পথ খোলা আছে-এসব প্রশ্ন এখন আলোচনায় আসছে।
-                সীমিত পরিসরের বিষয়টি কথাতেই রয়ে গেছে। বাস্তবতা হলো, গার্মেন্টস মালিকরা প্রায় সবাই তাদের কারখানা চালু করেছেন।
-                কারখানাগুলো খোলার সময় দেশের নানা প্রান্ত থেকে হাজার হাজার শ্রমিকের ঢাকায় ছুটে আসার সেই অভাবনীয় দৃশ্য নিয়ে অনেক আলোচনা হয়েছে।
-                এখন অনেক কারখানায় শ্রমিকের করোনাভাইরাস সংক্রমণের ঝুঁকির প্রশ্ন উঠেছে।
-                কিন্তু গার্মেন্টস খোলার মধ্যেই সরকারের চিন্তা সীমাবদ্ধ থাকেনি।
-                একের পর এক শিল্পকারখানা এবং দোকান বা ব্যবসায়িক প্রতিষ্ঠান খুলে দিয়ে দ্রুততার সাথে নানামুখী অর্থনৈতিক কর্মকান্ড শুরু করার একটা চেষ্টা দেখা যাচ্ছে।
-                সরকারি গবেষণা সংস্থা বিআইডিএস এর সিনিয়র গবেষক নাজনীন আহমেদ বলেছেন, এখন অর্থনৈতিক কর্মকাণ্ড শুরু করা ছাড়া বিকল্প নেই। তবে তাড়াহুড়ো না করে পরিকল্পনার প্রয়োজন ছিল বলে তিনি মনে করেন।</p>
+                <img src="{{asset($post->image)}}" alt="" />
+                <h4 class="caption">  
+                    @if (session()->get('lang') == 'english')
+                        {{$post->title_en}}
+                        @else
+                        {{$post->title_bn}}
+                        @endif
+
+                </h4>
+                <p>
+                    @if (session()->get('lang') == 'english')
+                        {!!$post->details_en!!}
+                        @else
+                        {!!$post->details_bn!!}
+                        @endif
+                </p>
             </div>
             <!-- ********* -->
             <div class="row">
-                <div class="col-md-12"><h2 class="heading">আরো সংবাদ</h2></div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="top-news sng-border-btm">
-                        <a href="#"><img src="assets/img/news.jpg" alt="Notebook"></a>
-                        <h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+                <div class="col-md-12"><h2 class="heading">
+                    @if (session()->get('lang') == 'english')
+                        More news
+                        @else
+                        আরো সংবাদ
+                        @endif 
+                    </h2></div>
+                    @php
+                        $more = DB::table('posts')->where('cat_id',$post->cat_id)->orderBy('id','DESC')->limit(3)->get();
+                    @endphp
+                    
+                    @foreach ($more as $row)
+                    <div class="col-md-4 col-sm-4">
+                        <div class="top-news sng-border-btm">
+                            <a href="#"><img src="{{asset($row->image)}}" alt="{{$row->title_bn}}"></a>
+                            <h4 class="heading-02"><a href="#">
+                                @if (session()->get('lang') == 'english')
+                                {{$row->title_en}}
+                                @else
+                                {{$row->title_bn}}
+                                @endif
+                            </a> </h4>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="top-news sng-border-btm">
-                        <a href="#"><img src="assets/img/news.jpg" alt="Notebook"></a>
-                        <h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="top-news sng-border-btm">
-                        <a href="#"><img src="assets/img/news.jpg" alt="Notebook"></a>
-                        <h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <div class="top-news">
-                        <a href="#"><img src="assets/img/news.jpg" alt="Notebook"></a>
-                        <h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="top-news">
-                        <a href="#"><img src="assets/img/news.jpg" alt="Notebook"></a>
-                        <h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <div class="top-news">
-                        <a href="#"><img src="assets/img/news.jpg" alt="Notebook"></a>
-                        <h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                    </div>
-                </div>
+                    @endforeach
+                
             </div>
         </div>
         <div class="col-md-4 col-sm-4">
             <!-- add-start -->	
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="sidebar-add"><img src="assets/img/add_01.jpg" alt="" /></div>
-                    </div>
+						<div class="col-md-12 col-sm-12">
+							<div class="sidebar-add"><img src="{{ asset('frontend/assets') }}/img/add_01.jpg" alt="" /></div>
+						</div>
                 </div><!-- /.add-close -->
-            <div class="tab-header">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs nav-justified" role="tablist">
-                    <li role="presentation" class="active"><a href="#tab21" aria-controls="tab21" role="tab" data-toggle="tab" aria-expanded="false">সর্বশেষ</a></li>
-                    <li role="presentation" ><a href="#tab22" aria-controls="tab22" role="tab" data-toggle="tab" aria-expanded="true">জনপ্রিয়</a></li>
-                    <li role="presentation" ><a href="#tab23" aria-controls="tab23" role="tab" data-toggle="tab" aria-expanded="true">জনপ্রিয়1</a></li>
-                </ul>
 
-                <!-- Tab panes -->
-                <div class="tab-content ">
-                    <div role="tabpanel" class="tab-pane in active" id="tab21">
-                        <div class="news-titletab">
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div><div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div><div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div><div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div><div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div><div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div><div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+                <!-- add-start -->	
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<div class="add"><img src="{{ asset('frontend/assets') }}/img/top-ad.jpg" alt="" /></div>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<div class="add"><img src="{{ asset('frontend/assets') }}/img/top-ad.jpg" alt="" /></div>
+				</div>
+			</div><!-- /.add-close -->	
+            
+            
+                @php
+					$latest = DB::table('posts')->orderBy('id','DESC')->limit(8)->get();
+					$fevarites = DB::table('posts')->orderBy('id','DESC')->inRandomOrder()->limit(8)->get();
+					$hightsee = DB::table('posts')->orderBy('id','ASC')->inRandomOrder()->limit(8)->get();
+				@endphp
+                <div class="tab-header">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab21" aria-controls="tab21" 
+                            role="tab" data-toggle="tab" aria-expanded="false">
+                            @if (session()->get('lang') == 'english')
+                            latest
+                            @else
+                            সর্বশেষ
+                             @endif
+                            
+                        </a></li>
+                        <li role="presentation" ><a href="#tab22" aria-controls="tab22" role="tab"      
+                            data-toggle="tab" aria-expanded="true">
+                            @if (session()->get('lang') == 'english')
+                            Favorites
+                            @else
+                            জনপ্রিয়
+                             @endif
+                            
+                        </a></li>
+                        <li role="presentation" ><a href="#tab23" aria-controls="tab23" role="tab"  
+                            data-toggle="tab" aria-expanded="true">
+                            @if (session()->get('lang') == 'english')
+                            Most Views
+                            @else
+                            সর্বাধিক
+                             @endif
+                        </a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content ">
+
+
+                        <div role="tabpanel" class="tab-pane in active" id="tab21">
+                            <div class="news-titletab">
+                             @foreach ($latest as $row)
+                                <div class="news-title-02">
+                                    <h4 class="heading-03"><a href="#">
+                                     @if (session()->get('lang') == 'english')
+                                        {{$row->title_en}}
+                                     @else
+                                         {{$row->title_bn}}
+                                     @endif
+                                    </a> </h4>
+                                </div>	
+                            @endforeach
                             </div>
                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab22">
-                        <div class="news-titletab">
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+                        
+                        <div role="tabpanel" class="tab-pane fade" id="tab22">
+                            <div class="news-titletab">
+                                    @foreach ($fevarites as $row)
+                                       <div class="news-title-02">
+                                           <h4 class="heading-03"><a href="#">
+                                            @if (session()->get('lang') == 'english')
+                                               {{$row->title_en}}
+                                            @else
+                                                {{$row->title_bn}}
+                                            @endif
+                                           </a> </h4>
+                                       </div>	
+                                   @endforeach    
+                            </div>                                     
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="tab23">	
+                            <div class="news-titletab">
+                                    @foreach ($hightsee as $row)
+                                       <div class="news-title-02">
+                                           <h4 class="heading-03"><a href="#">
+                                            @if (session()->get('lang') == 'english')
+                                               {{$row->title_en}}
+                                            @else
+                                                {{$row->title_bn}}
+                                            @endif
+                                           </a> </h4>
+                                       </div>	
+                                   @endforeach						                                          
                             </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                        </div>                                          
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab23">	
-                        <div class="news-titletab">
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                            <div class="news-title-02">
-                                <h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-                            </div>
-                        </div>						                                          
-                    </div>
+                        </div>
                 </div>
             </div>
             <!-- add-start -->	

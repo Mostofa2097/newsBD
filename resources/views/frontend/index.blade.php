@@ -1,8 +1,8 @@
 @extends('layouts.front')
 @section('content')
 @php
-	$firstsectionbig = DB::table('posts')->where('first_section_thumbnail',1)->orderBy('id','DESC')->orderBy('id','DESC')->first();
-	$firstsectionsmall = DB::table('posts')->where('first_section',1)->orderBy('id','DESC')->limit(8)->orderBy('id','DESC')->get();
+	$firstsectionbig = DB::table('posts')->where('first_section_thumbnail',1)->orderBy('id','DESC')->first();
+	$firstsectionsmall = DB::table('posts')->where('first_section',1)->orderBy('id','DESC')->limit(8)->get();
 @endphp
 
 <!-- 1st-news-section-start -->	
@@ -54,7 +54,7 @@
 										</a> </h4>
 									</div>
 								</div>
-								@endforeach
+						@endforeach
 				    </div>
 					
 					<!-- add-start -->	
@@ -66,6 +66,7 @@
 					
 					<!-- news-start -->
 					<div class="row">
+
 						@php
 							$scencecat = DB::table('categories')->first();
 							$scencecatpost = DB::table('posts')->where('cat_id',$scencecat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first();
@@ -92,8 +93,8 @@
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
 										<div class="top-news">
-											<a href="#"><img src="{{ $scencecatpost->image }}" alt="Notebook"></a>
-											<h4 class="heading-02" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$scencecatpost->id.'/'.$slug)}}"><img src="{{ $scencecatpost->image }}" alt="Notebook"></a>
+											<h4 class="heading-02" style="height: 80px"><a href="{{URL::to('view-post/'.$scencecatpost->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$scencecatpost->title_en  }}
                                             @else
@@ -107,8 +108,8 @@
                                         @foreach ($scencecatpostsmall as $row)
 
 										<div class="image-title">
-											<a href="#"><img src="{{ $row->image }}" alt="Notebook"></a>
-											<h4 class="heading-03" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src="{{ $row->image }}" alt="Notebook"></a>
+											<h4 class="heading-03" style="height: 80px"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$row->title_en  }}
                                             @else
@@ -149,8 +150,8 @@
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
 										<div class="top-news">
-											<a href="#"><img src="{{ $scencecatpost->image }}" alt="Notebook"></a>
-											<h4 class="heading-02" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$scencecatpost->id.'/'.$slug)}}"><img src="{{ $scencecatpost->image }}" alt="Notebook"></a>
+											<h4 class="heading-02" style="height: 80px"><a href="{{URL::to('view-post/'.$scencecatpost->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$scencecatpost->title_en  }}
                                             @else
@@ -164,8 +165,8 @@
                                         @foreach ($scencecatpostsmall as $row)
 
 										<div class="image-title">
-											<a href="#"><img src="{{ $row->image }}" alt="Notebook"></a>
-											<h4 class="heading-03" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src="{{ $row->image }}" alt="Notebook"></a>
+											<h4 class="heading-03" style="height: 80px"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$row->title_en  }}
                                             @else
@@ -229,7 +230,7 @@
 			</div>
 		</div>
 	</section><!-- /.1st-news-section-close -->
-
+	
 	<!-- 2nd-news-section-start -->	
 	<section class="news-section">
 		<div class="container-fluid">
@@ -262,8 +263,8 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="top-news">
-									<a href="#"><img src=" {{ $thirdcatpost->image}} " alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									<a href="{{URL::to('view-post/'.$thirdcatpost->id.'/'.$slug)}}"><img src=" {{ $thirdcatpost->image}} " alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{URL::to('view-post/'.$thirdcatpost->id.'/'.$slug)}}">
 										@if (session()->get('lang') == 'english')
                                             {{$thirdcatpost->title_en  }}
                                             @else
@@ -275,8 +276,8 @@
 							<div class="col-md-6 col-sm-6">
 								@foreach ($thirdcatpostsmall as $row)
 								<div class="image-title">
-									<a href="#"><img src=" {{$row->image}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#"></a> 
+									<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src=" {{$row->image}}" alt="Notebook"></a>
+									<h4 class="heading-03"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"></a> 
 										@if (session()->get('lang') == 'english')
 										{{$row->title_en  }}
 										@else
@@ -320,8 +321,8 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="top-news">
-									<a href="#"><img src=" {{ $fourthcatpost->image}} " alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									<a href="{{URL::to('view-post/'.$fourthcatpost->id.'/'.$slug)}}"><img src=" {{ $fourthcatpost->image}} " alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{URL::to('view-post/'.$fourthcatpost->id.'/'.$slug)}}">
 										@if (session()->get('lang') == 'english')
                                             {{$fourthcatpost->title_en  }}
                                             @else
@@ -333,8 +334,8 @@
 							<div class="col-md-6 col-sm-6">
 								@foreach ($fourthcatpostsmall as $row)
 								<div class="image-title">
-									<a href="#"><img src=" {{$row->image}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#"></a> 
+									<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src=" {{$row->image}}" alt="Notebook"></a>
+									<h4 class="heading-03"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"></a> 
 										@if (session()->get('lang') == 'english')
 										{{$row->title_en  }}
 										@else
@@ -389,8 +390,8 @@
 				 <div class="row">
 					 <div class="col-md-6 col-sm-6">
 						 <div class="top-news">
-							 <a href="#"><img src=" {{ $fifthcatpost->image}} " alt="Notebook"></a>
-							 <h4 class="heading-02"><a href="#">
+							 <a href="{{URL::to('view-post/'.$fifthcatpost->id.'/'.$slug)}}"><img src=" {{ $fifthcatpost->image}} " alt="Notebook"></a>
+							 <h4 class="heading-02"><a href="{{URL::to('view-post/'.$fifthcatpost->id.'/'.$slug)}}">
 								 @if (session()->get('lang') == 'english')
 									 {{$fifthcatpost->title_en  }}
 									 @else
@@ -402,8 +403,8 @@
 					 <div class="col-md-6 col-sm-6">
 						 @foreach ($fifthcatpostsmall as $row)
 						 <div class="image-title">
-							 <a href="#"><img src=" {{$row->image}}" alt="Notebook"></a>
-							 <h4 class="heading-03"><a href="#"></a> 
+							 <a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src=" {{$row->image}}" alt="Notebook"></a>
+							 <h4 class="heading-03"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"></a> 
 								 @if (session()->get('lang') == 'english')
 								 {{$row->title_en  }}
 								 @else
@@ -447,8 +448,8 @@
 				 <div class="row">
 					 <div class="col-md-6 col-sm-6">
 						 <div class="top-news">
-							 <a href="#"><img src=" {{ $sixthcatpost->image}} " alt="Notebook"></a>
-							 <h4 class="heading-02"><a href="#">
+							 <a href="{{URL::to('view-post/'.$sixthcatpost->id.'/'.$slug)}}"><img src=" {{ $sixthcatpost->image}} " alt="Notebook"></a>
+							 <h4 class="heading-02"><a href="{{URL::to('view-post/'.$sixthcatpost->id.'/'.$slug)}}">
 								 @if (session()->get('lang') == 'english')
 									 {{$sixthcatpost->title_en  }}
 									 @else
@@ -460,8 +461,8 @@
 					 <div class="col-md-6 col-sm-6">
 						 @foreach ($sixthcatpostsmall as $row)
 						 <div class="image-title">
-							 <a href="#"><img src=" {{$row->image}}" alt="Notebook"></a>
-							 <h4 class="heading-03"><a href="#"></a> 
+							 <a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src=" {{$row->image}}" alt="Notebook"></a>
+							 <h4 class="heading-03"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"></a> 
 								 @if (session()->get('lang') == 'english')
 								 {{$row->title_en  }}
 								 @else
@@ -530,8 +531,8 @@
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
 										<div class="top-news">
-											<a href="#"><img src="{{ $seventhcatpost->image }}" alt="Notebook"></a>
-											<h4 class="heading-02" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$seventhcatpost->id.'/'.$slug)}}"><img src="{{ $seventhcatpost->image }}" alt="Notebook"></a>
+											<h4 class="heading-02" style="height: 80px"><a href="{{URL::to('view-post/'.$seventhcatpost->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$seventhcatpost->title_en  }}
                                             @else
@@ -545,8 +546,8 @@
                                         @foreach ($seventhcatpostsmall as $row)
 
 										<div class="image-title">
-											<a href="#"><img src="{{ $row->image }}" alt="Notebook"></a>
-											<h4 class="heading-03" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src="{{ $row->image }}" alt="Notebook"></a>
+											<h4 class="heading-03" style="height: 80px"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$row->title_en  }}
                                             @else
@@ -587,8 +588,8 @@
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
 										<div class="top-news">
-											<a href="#"><img src="{{ $eightthcatpost->image }}" alt="Notebook"></a>
-											<h4 class="heading-02" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$eightthcatpost->id.'/'.$slug)}}"><img src="{{ $eightthcatpost->image }}" alt="Notebook"></a>
+											<h4 class="heading-02" style="height: 80px"><a href="{{URL::to('view-post/'.$eightthcatpost->id.'/'.$slug)}}">
 											@if (session()->get('lang') == 'english')
                                             {{$eightthcatpost->title_en  }}
                                             @else
@@ -602,8 +603,8 @@
                                         @foreach ($eightthcatpostsmall as $row)
 
 										<div class="image-title">
-											<a href="#"><img src="{{ $row->image }}" alt="Notebook"></a>
-											<h4 class="heading-03" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src="{{ $row->image }}" alt="Notebook"></a>
+											<h4 class="heading-03" style="height: 80px"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$row->title_en  }}
                                             @else
@@ -653,8 +654,8 @@
 						<div class="col-md-4 col-sm-4">
 							<div class="bg-gray">
 								<div class="top-news">
-									<a href="#"><img src="{{ $cointrybigpost->image }}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									<a href="{{URL::to('view-post/'.$cointrybigpost->id.'/'.$slug)}}"><img src="{{ $cointrybigpost->image }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{URL::to('view-post/'.$cointrybigpost->id.'/'.$slug)}}">
 										@if (session()->get('lang') == 'english')
                                             {{$cointrybigpost->title_en}}
                                             @else
@@ -669,8 +670,8 @@
 							           @foreach ($countryfirst3 as $row)
 
 										<div class="image-title">
-											<a href="#"><img src="{{ $row->image }}" alt="Notebook"></a>
-											<h4 class="heading-03" style="height: 80px"><a href="#">
+											<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src="{{ $row->image }}" alt="Notebook"></a>
+											<h4 class="heading-03" style="height: 80px"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}">
 												@if (session()->get('lang') == 'english')
                                             {{$row->title_en  }}
                                             @else
@@ -686,8 +687,8 @@
 							@foreach ($countrysecond3 as $row)
 
 							<div class="image-title">
-								<a href="#"><img src="{{ $row->image }}" alt="Notebook"></a>
-								<h4 class="heading-03" style="height: 80px"><a href="#">
+								<a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}"><img src="{{ $row->image }}" alt="Notebook"></a>
+								<h4 class="heading-03" style="height: 80px"><a href="{{URL::to('view-post/'.$row->id.'/'.$slug)}}">
 								@if (session()->get('lang') == 'english')
 								{{$row->title_en  }}
 								@else

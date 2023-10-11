@@ -30,7 +30,8 @@ class ExtraController extends Controller
         $post = DB::table('posts')
             ->join('categories', 'posts.cat_id', 'categories.id')
             ->join('subcategories', 'posts.subcat_id', 'subcategories.id')
-            ->select('posts.*', 'categories.category_bn', 'subcategories.subcategory_bn')
+            ->join('users', 'posts.user_id', 'users.id')
+            ->select('posts.*', 'categories.category_bn','users.name','categories.category_en', 'subcategories.subcategory_bn','subcategories.subcategory_en')
             ->where('posts.id',$id)
             ->first();
         return view('frontend.singlepost ', compact('post'));
