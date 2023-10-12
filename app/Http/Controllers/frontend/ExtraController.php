@@ -37,4 +37,9 @@ class ExtraController extends Controller
         return view('frontend.singlepost ', compact('post'));
 
     }
+    public function AllPost($id,$subcategory_bn){
+        $posts = DB::table('posts')->where('subcat_id',$id)->orderBy('id',"DESC")->paginate(2);
+        return view('frontend.allposts',compact('posts'));
+        
+    }
 }

@@ -110,3 +110,4 @@ Route::get('/lang/english', [ExtraController::class, 'english'])->name('lang.eng
 Route::get('/lang/bangla', [ExtraController::class, 'bangla'])->name('lang.bangla');
 //__single posts__
 Route::get('view-post/{id}/{slug}', [ExtraController::class, 'SinglePost']);
+Route::get('posts/{id}/{subcategory_bn}', [ExtraController::class, 'AllPost']);

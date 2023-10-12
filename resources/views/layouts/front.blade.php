@@ -35,7 +35,7 @@ $social = DB::table('socials')->first();
 			<div class="row">
 				<div class="col-xs-6 col-md-2 col-sm-4">
 					<div class="header_logo">
-						<a href=""><img src="{{ asset('frontend/assets') }}/img/demo_logo.png"></a> 
+						<a href="{{URL::to('')}}"><img src="{{ asset('frontend/assets') }}/img/demo_logo.png"></a> 
 					</div>
 				</div>              
 				<div class="col-xs-6 col-md-8 col-sm-8">
@@ -71,7 +71,7 @@ $social = DB::table('socials')->first();
 												</a>
 											<ul class="dropdown-menu">
 												@foreach ($subcategory as $row)
-												<li><a href="#">
+												<li><a href="{{URL::to('posts/'.$row->id.'/'.$row->subcategory_bn)}}">
 													@if (session()->get('lang') == 'english')
 													{{$row->subcategory_en}} 
 													@else
