@@ -83,6 +83,7 @@
                         @endif
                 </p>
             </div>
+            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div>
             <!-- ********* -->
             <div class="row">
                 <div class="col-md-12"><h2 class="heading">
@@ -113,6 +114,7 @@
                 
             </div>
         </div>
+        
         <div class="col-md-4 col-sm-4">
             <!-- add-start -->	
                 <div class="row">
@@ -233,6 +235,8 @@
 </section>
 
 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0" nonce="DLzycs7T"></script>
 
 
 @endsection
