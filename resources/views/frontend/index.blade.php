@@ -212,11 +212,25 @@
 						</div>
 					</div><!-- /.youtube-live-close -->	
 					@endif
-					<!-- facebook-page-start -->
-					<div class="cetagory-title-03">ফেসবুকে আমরা</div>
+					
+					<!--facebook-page-start -->
+					<div class="cetagory-title-03">
+						@if (session()->get('lang') == 'english')
+                                            Our Facebook
+                                            @else
+                                            ফেসবুকে আমরা
+                                             @endif
+						 </div>
 					<div class="fb-root">
-						facebook page here
-					</div><!-- /.facebook-page-close -->	
+					<div class="fb-page" data-href="https://www.facebook.com/ehtirambd" data-tabs=""
+					 data-width="" data-height="" data-small-header="true" data-adapt-container-width="true"
+					 data-hide-cover="false" data-show-facepile="true"><blockquote cite="" class="fb-xfbml-parse-ignore">
+						<a href="">newsBD
+					</a></blockquote></div>
+					<div id="fb-root"></div>
+					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/
+					sdk.js#xfbml=1&version=v7.0&appld=251302696084561&autoLogAppEvents=1"></script>
+					</div>	
 					
 					<!-- add-start -->	
 					<div class="row">

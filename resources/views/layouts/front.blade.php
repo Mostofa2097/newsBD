@@ -197,9 +197,21 @@ return $str;
 					<div class="date">
 						<ul>
 							<script type="text/javascript" src="http://bangladate.appspot.com/index2.php"></script>
-							<li><i class="fa fa-map-marker" aria-hidden="true"></i>  ঢাকা </li>
+							<li><i class="fa fa-map-marker" aria-hidden="true"></i> 
+								@if (session()->get('lang') == 'english')
+								      Dhaka
+									  @else
+									  ঢাকা
+									  @endif
+								 </li>
 							<li><i class="fa fa-calendar" aria-hidden="true"></i> {{bn_date(date('d M Y,l,h:i:s a'))}}</li>
-							<li><i class="fa fa-clock-o" aria-hidden="true"></i> আপডেট ৫ মিনিট আগে</li>
+							<li><i class="fa fa-clock-o" aria-hidden="true"></i> 
+								      @if (session()->get('lang') == 'english')
+								      Updated 5 minutes ago
+									  @else
+									  আপডেট ৫ মিনিট আগে
+									  @endif
+								    </li>
 						</ul>
 						
 					</div>
